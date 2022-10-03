@@ -1,0 +1,6 @@
+Eclipse 2022-03
+jre, jdk : 11
+maven
+iniciado no mac
+-------------
+
