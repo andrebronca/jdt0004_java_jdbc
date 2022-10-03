@@ -1,0 +1,13 @@
+create table userposjava (
+ id bigint not null,
+ nome character varying(255),
+ email character varying(255),
+ constraint user_pk primary key(id)
+);
+
+INSERT INTO public.userposjava(id, nome, email)
+  VALUES (1, 'Andre', 'andre@g1.com');
+  
+INSERT INTO public.userposjava(id, nome, email)
+  VALUES (2, 'Roberto', 'roberto@g1.com');
+
