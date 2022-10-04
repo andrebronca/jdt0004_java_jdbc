@@ -3,4 +3,4 @@ jre, jdk : 11
 maven
 iniciado no mac
 -------------
-
+Esse projeto está sendo desenvolvido em jdbc puro.
