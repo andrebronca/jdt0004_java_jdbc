@@ -4,3 +4,4 @@ maven
 iniciado no mac
 -------------
 Esse projeto está sendo desenvolvido em jdbc puro.
+Obs.: Nesse projeto é possível fazer um sistema CRUD em jsp puro. O que faltaria é um front pra manipulação de dados.
