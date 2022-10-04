@@ -18,9 +18,8 @@ public class SingleConnectionTest {
 	@Test
 	public void inserindoUsuarioNoBD() {
 		Userposjava user = new Userposjava();
-		user.setId(5L);
-		user.setNome("bronca5");
-		user.setEmail("bronca5@g1.com");
+		user.setNome("bronca6");
+		user.setEmail("bronca6@g1.com");
 		UserPosDAO dao = new UserPosDAO();
 		boolean sucesso = dao.salvar(user);
 		assertTrue(sucesso);
@@ -51,6 +50,15 @@ public class SingleConnectionTest {
 		dao.autalizarNome(user);
 		user = dao.getByID(2L);
 		System.out.println(user);
+	}
+	
+	@Test
+	public void deletarUsuario() {
+		UserPosDAO dao = new UserPosDAO();
+		Userposjava user = dao.getByID(3);
+		if (user != null) {
+			dao.deletar(user.getId());
+		}
 	}
 
 }

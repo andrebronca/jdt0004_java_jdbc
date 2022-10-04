@@ -21,11 +21,10 @@ public class UserPosDAO {
 	public boolean salvar(Userposjava user) {
 		boolean res = false;
 		try {
-			String sql = "insert into " + TABELA + " (id, nome, email) values (?,?,?)";
+			String sql = "insert into " + TABELA + " (nome, email) values (?,?)";
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setLong(1, user.getId());
-			ps.setString(2, user.getNome());
-			ps.setString(3, user.getEmail());
+			ps.setString(1, user.getNome());
+			ps.setString(2, user.getEmail());
 			ps.execute();
 			conn.commit();
 			res = true;
@@ -35,6 +34,12 @@ public class UserPosDAO {
 				conn.rollback();
 			} catch (SQLException e1) {
 				e1.printStackTrace();
+			}
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 		}
 		return res;
@@ -93,7 +98,35 @@ public class UserPosDAO {
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-
+	}
+	
+	public void deletar(Long id) {
+		String sql = "delete from userposjava where id = ?";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setLong(1, id);
+			ps.execute();
+			conn.commit();
+		} catch (Exception e) {
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
 	}
 }

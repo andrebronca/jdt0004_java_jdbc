@@ -11,3 +11,46 @@ INSERT INTO public.userposjava(id, nome, email)
 INSERT INTO public.userposjava(id, nome, email)
   VALUES (2, 'Roberto', 'roberto@g1.com');
 
+select * from userposjava 
+ order by id;
+
+--select o id_maximo: 5
+--start: (id_maximo + 1)
+create sequence usersequence 
+ increment 1 
+ minvalue 1 
+ maxvalue 9999999 
+ start 6;
+ 
+--adicionar a sequencia na coluna id da tabela
+alter table userposjava 
+ alter column id 
+ set default nextval('usersequence'::regclass);
+ 
+delete from userposjava where id = 4;
+
+alter table userposjava add unique (id);
+
+create table telefoneuser(
+ id bigint not null unique,
+ numero character varying(255) not null,
+ tipo character varying(255) not null,
+ usuariopessoa bigint not null,
+ constraint telefone_id primary key(id)
+);
+
+alter table telefoneuser 
+add foreign key(usuariopessoa) 
+references userposjava(id);
+
+create sequence telefonesequence 
+ increment 1 
+ minvalue 1 
+ maxvalue 9999999 
+ start 1;
+ 
+--adicionar a sequencia na coluna id da tabela
+alter table telefoneuser 
+ alter column id 
+ set default nextval('telefonesequence'::regclass);
+ 
